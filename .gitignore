@@ -1,3 +1,9 @@
 **/node_modules/**
 lib
 dist
+
+#coding agent
+.claude
+.qoder
+.codex
+.codebuddy

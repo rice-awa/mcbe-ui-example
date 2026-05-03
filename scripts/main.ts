@@ -23,7 +23,9 @@ function showActionForm(player: Player): void {
     .button("选项3，可以调用函数", "textures/items/apple")
     .button("密码验证", "textures/ui/gear");
 
-  form.show(player).then((response: ActionFormResponse) => {
+  form
+    .show(player)
+    .then((response: ActionFormResponse) => {
       if (response.canceled) return;
 
       switch (response.selection) {
@@ -51,7 +53,9 @@ function showActionForm(player: Player): void {
 function showMessageForm(player: Player): void {
   const form = new MessageFormData().title("标题").body("内容").button1("按钮1").button2("按钮2");
 
-  form.show(player).then((response: MessageFormResponse) => {
+  form
+    .show(player)
+    .then((response: MessageFormResponse) => {
       if (response.canceled) return;
 
       tellraw(`选中的索引: ${response.selection}`);
@@ -77,17 +81,17 @@ function showModalForm(player: Player): void {
     .submitButton("提交按钮文字")
     .divider();
 
-  form.show(player).then((response: ModalFormResponse) => {
+  form
+    .show(player)
+    .then((response: ModalFormResponse) => {
       if (response.canceled) return;
 
       const values = response.formValues;
       tellraw(`下拉列表选项: ${values?.[0]}`);
       tellraw(`滑动条数据: ${values?.[1]}`);
       tellraw(`文本框内容: ${values?.[2]}`);
-      
 
       tellraw(values?.[3] === true ? "开关已开启" : "开关未开启");
-      
     })
     .catch((error: Error) => {
       tellraw(`§c[表单错误] ${error.message}`);
@@ -98,7 +102,9 @@ function showModalForm(player: Player): void {
 function showPasswordVerify(player: Player): void {
   const form = new ModalFormData().title("请输入密码").textField("请输入密码", "请输入密码");
 
-  form.show(player).then((response: ModalFormResponse) => {
+  form
+    .show(player)
+    .then((response: ModalFormResponse) => {
       if (response.canceled) return;
 
       if (response.formValues?.[0] === "114514") {
