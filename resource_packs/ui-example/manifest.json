@@ -3,7 +3,7 @@
   "header": {
     "name": "ui-example",
     "description": "一个简单的UI表单示例",
-    "uuid": "8a0a5c09-5bb5-4b3d-8319-c33c493abcef",
+    "uuid": "35c3b120-bd00-46f9-a259-bb8633e4f7fd",
     "version": [1, 0, 0],
     "min_engine_version": [1, 26, 10]
   },
@@ -11,13 +11,13 @@
     {
       "description": "一个简单的UI表单示例",
       "type": "resources",
-      "uuid": "37725de8-a7b9-4bf3-ab87-e3acc1cf9213",
+      "uuid": "200e4ea2-ad3e-4e94-9588-85379b151eca",
       "version": [1, 0, 0]
     }
   ],
   "dependencies": [
     {
-      "uuid": "7a4f5a9f-4e68-443d-b5c2-ae20944b4e14",
+      "uuid": "a42d0805-91b7-45a7-a7b4-3a9b92a04074",
       "version": [1, 0, 0]
     }
   ]
