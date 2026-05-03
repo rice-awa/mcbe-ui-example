@@ -8,6 +8,11 @@ import {
   ModalFormResponse,
 } from "@minecraft/server-ui";
 
+function tellraw(message: string): void {
+  const rawtext = JSON.stringify({ rawtext: [{ text: message }] });
+  world.getDimension("overworld").runCommand(`tellraw @a ${rawtext}`);
+}
+
 // ActionFormData 示例 — 多选项按钮表单
 function showActionForm(player: Player): void {
   const form = new ActionFormData()
@@ -23,10 +28,10 @@ function showActionForm(player: Player): void {
 
       switch (response.selection) {
         case 0:
-          world.sendMessage("say 选项1 被点击");
+          tellraw("选项1 被点击");
           break;
         case 1:
-          world.sendMessage("say 选项2 — 打开双按钮表单");
+          tellraw("选项2 — 打开双按钮表单");
           showMessageForm(player);
           break;
         case 2:
@@ -38,7 +43,7 @@ function showActionForm(player: Player): void {
       }
     })
     .catch((error: Error) => {
-      world.sendMessage(`§c[表单错误] ${error.message}`);
+      tellraw(`§c[表单错误] ${error.message}`);
     });
 }
 
@@ -49,15 +54,15 @@ function showMessageForm(player: Player): void {
   form.show(player).then((response: MessageFormResponse) => {
       if (response.canceled) return;
 
-      world.sendMessage(`say 选中的索引: ${response.selection}`);
+      tellraw(`选中的索引: ${response.selection}`);
       if (response.selection === 0) {
-        world.sendMessage("say 按钮1: awa");
+        tellraw("按钮1: awa");
       } else if (response.selection === 1) {
-        world.sendMessage("say 按钮2: qwq");
+        tellraw("按钮2: qwq");
       }
     })
     .catch((error: Error) => {
-      world.sendMessage(`§c[表单错误] ${error.message}`);
+      tellraw(`§c[表单错误] ${error.message}`);
     });
 }
 
@@ -76,14 +81,17 @@ function showModalForm(player: Player): void {
       if (response.canceled) return;
 
       const values = response.formValues;
-      world.sendMessage(`say 文本框内容: ${values?.[2]}`);
+      tellraw(`下拉列表选项: ${values?.[0]}`);
+      tellraw(`滑动条数据: ${values?.[1]}`);
+      tellraw(`文本框内容: ${values?.[2]}`);
+      
 
       if (values?.[3] === true) {
-        world.sendMessage("say 开关已开启 — 114514");
+        tellraw("开关已开启");
       }
     })
     .catch((error: Error) => {
-      world.sendMessage(`§c[表单错误] ${error.message}`);
+      tellraw(`§c[表单错误] ${error.message}`);
     });
 }
 
@@ -95,14 +103,14 @@ function showPasswordVerify(player: Player): void {
       if (response.canceled) return;
 
       if (response.formValues?.[0] === "114514") {
-        world.sendMessage(`title ${player.nameTag} title 密码正确!`);
+        tellraw(`${player.nameTag} 密码正确!`);
       } else {
-        world.sendMessage(`title ${player.nameTag} title 密码不正确!`);
-        world.sendMessage(`title ${player.nameTag} subtitle 请尝试重新输入`);
+        tellraw(`${player.nameTag} 密码不正确!`);
+        tellraw(`${player.nameTag} 请尝试重新输入`);
       }
     })
     .catch((error: Error) => {
-      world.sendMessage(`§c[表单错误] ${error.message}`);
+      tellraw(`§c[表单错误] ${error.message}`);
     });
 }
 
