@@ -86,9 +86,8 @@ function showModalForm(player: Player): void {
       tellraw(`文本框内容: ${values?.[2]}`);
       
 
-      if (values?.[3] === true) {
-        tellraw("开关已开启");
-      }
+      tellraw(values?.[3] === true ? "开关已开启" : "开关未开启");
+      
     })
     .catch((error: Error) => {
       tellraw(`§c[表单错误] ${error.message}`);
