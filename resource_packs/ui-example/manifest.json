@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "ui-example",
+    "description": "一个简单的UI表单示例",
+    "uuid": "8a0a5c09-5bb5-4b3d-8319-c33c493abcef",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 10]
+  },
+  "modules": [
+    {
+      "description": "一个简单的UI表单示例",
+      "type": "resources",
+      "uuid": "37725de8-a7b9-4bf3-ab87-e3acc1cf9213",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "7a4f5a9f-4e68-443d-b5c2-ae20944b4e14",
+      "version": [1, 0, 0]
+    }
+  ]
+}
